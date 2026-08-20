@@ -8,28 +8,62 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
+    <script src="script.js" defer></script>
 </head>
 <body>
-    <header>
-        <p class="hero-label">Técnico en Computación</p>
-        <h1>Mariano Arenas</h1>
-        <p class="hero-subtitle">Sistemas · DevOps · Desarrollo de Software</p>
-    </header>
-
     <nav>
-        <ul>
-            <li><a href="#presentacion">Presentación</a></li>
-            <li><a href="#habilidades">Habilidades</a></li>
-            <li><a href="#personal">Sobre mí</a></li>
-            <li><a href="#contacto">Contacto</a></li>
-        </ul>
+        <div class="nav-inner">
+            <a class="nav-brand" href="#inicio"><span>~$</span> mariano</a>
+            <ul>
+                <li><a href="#presentacion">Presentación</a></li>
+                <li><a href="#habilidades">Habilidades</a></li>
+                <li><a href="#personal">Sobre mí</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+            <button class="theme-toggle" type="button" aria-label="Cambiar a tema claro" title="Cambiar a tema claro">
+                <svg class="theme-icon icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><line x1="12" y1="2" x2="12" y2="4"></line><line x1="12" y1="20" x2="12" y2="22"></line><line x1="4.93" y1="4.93" x2="6.34" y2="6.34"></line><line x1="17.66" y1="17.66" x2="19.07" y2="19.07"></line><line x1="2" y1="12" x2="4" y2="12"></line><line x1="20" y1="12" x2="22" y2="12"></line><line x1="4.93" y1="19.07" x2="6.34" y2="17.66"></line><line x1="17.66" y1="6.34" x2="19.07" y2="4.93"></line></svg>
+                <svg class="theme-icon icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path></svg>
+            </button>
+        </div>
     </nav>
+
+    <header class="hero" id="inicio">
+        <div class="hero-content">
+            <p class="hero-label">Técnico en Computación</p>
+            <h1>Mariano Arenas</h1>
+            <p class="hero-subtitle">Sistemas · DevOps · Desarrollo de Software</p>
+            <p class="hero-intro">Me dedico a integrar sistemas, infraestructura y desarrollo de software.
+                Actualmente estoy profundizando en Front End para incorporar también la
+                capa de interfaz y completar el recorrido de una aplicación.</p>
+            <div class="hero-actions">
+                <a class="btn btn-secondary" href="#habilidades">Ver habilidades</a>
+                <a class="btn btn-secondary" href="https://github.com/NanoCode10" target="_blank" rel="noopener noreferrer">GitHub</a>
+            </div>
+        </div>
+        <div class="hero-side">
+            <img class="hero-avatar" src="assets/avatar-nanocode.png" alt="Avatar de Mariano Arenas" width="192" height="192">
+            <div class="terminal">
+                <div class="terminal-bar">
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-dot"></span>
+                    <span class="terminal-title">mariano@portfolio:~</span>
+                </div>
+                <div class="terminal-body">
+                    <p><span class="terminal-prompt">mariano@portfolio:~$</span> whoami</p>
+                    <p class="terminal-output">Mariano Arenas</p>
+                    <p><span class="terminal-prompt">mariano@portfolio:~$</span> focus</p>
+                    <p class="terminal-output">Sistemas / DevOps / Front End</p>
+                </div>
+            </div>
+        </div>
+    </header>
 
     <main>
         <section id="presentacion">
             <h2>Presentación</h2>
-            <p>Soy Mariano Arenas, Técnico en Computación con experiencia en sistemas, infraestructura y desarrollo de software.</p>
-            <p>Actualmente estoy ampliando mi formación en desarrollo Front End, incorporando HTML, CSS y JavaScript para construir interfaces web claras, accesibles y funcionales.</p>
+            <p>Actualmente curso Desarrollo de Sistemas Web Front End como parte de mi formación, incorporando HTML, CSS y JavaScript para ampliar mi experiencia hacia la construcción de interfaces web.</p>
+            <p>Este portfolio forma parte de ese proceso y reúne tecnologías que ya utilizo con los nuevos conocimientos que voy incorporando durante la materia.</p>
         </section>
 
         <section id="habilidades">
@@ -56,12 +90,20 @@
 
         <section id="contacto">
             <h2>Contacto</h2>
-            <p>GitHub: <a href="https://github.com/NanoCode10" target="_blank" rel="noopener noreferrer">github.com/NanoCode10</a></p>
+            <p>
+                <a class="btn btn-secondary" href="https://github.com/NanoCode10" target="_blank" rel="noopener noreferrer">
+                    <svg width="18" height="18" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0 0 16 8c0-4.42-3.58-8-8-8z"></path></svg>
+                    NanoCode10
+                </a>
+            </p>
         </section>
     </main>
 
     <footer>
         <p>Desarrollo de Sistemas Web · Front End · 2026 · 2do Cuatrimestre</p>
+        <a class="footer-link" href="#inicio" aria-label="Volver al inicio" title="Volver al inicio">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="18 15 12 9 6 15"></polyline></svg>
+        </a>
     </footer>
 </body>
 </html>

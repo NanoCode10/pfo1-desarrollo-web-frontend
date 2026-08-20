@@ -1,11 +1,11 @@
 /* ==========================================================================
    PFO1 · Desarrollo de Sistemas Web · Front End
    Portfolio personal — Mariano Arenas
-   Versión visual 2 · CSS puro · temas Light/Dark · identidad técnica DevOps
+   Versión visual 3 · identidad de sistemas · acento rojo · temas dark/light
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. Variables globales — tokens de diseño (no dependen del tema)
+   1. Tokens de diseño (independientes del tema)
    -------------------------------------------------------------------------- */
 :root {
     /* Tipografías */
@@ -28,39 +28,41 @@
 }
 
 /* --------------------------------------------------------------------------
-   2. Paleta DARK (tema por defecto)
+   2. Paleta DARK (tema por defecto) — negro / grises / acento rojo
    -------------------------------------------------------------------------- */
 :root {
-    --color-bg:            #14161a;
-    --color-bg-soft:       #1b1e24;
-    --color-surface:       #22262e;
-    --color-border:        #2b303a;
+    --color-bg:            #0f1013;
+    --color-bg-soft:       #16181d;
+    --color-surface:       #1e2128;
+    --color-border:        #282c35;
     --color-text:          #e8eaee;
-    --color-text-muted:    #9aa1ad;
-    --color-accent:        #3ecf8e;
-    --color-accent-strong: #2fbf7f;
-    --color-accent-dim:    rgba(62, 207, 142, 0.12);
-    --color-on-accent:     #0d1210;
-    --shadow-card:         0 1px 3px rgba(0, 0, 0, 0.35);
+    --color-text-muted:    #969daa;
+    --color-accent:        #e5484d;
+    --color-accent-strong: #f2555a;
+    --color-accent-dim:    rgba(229, 72, 77, 0.12);
+    --color-on-accent:     #ffffff;
+    --color-terminal-bg:   #0a0b0e;
+    --color-terminal-bar:  #14161a;
+    --shadow-card:         0 1px 3px rgba(0, 0, 0, 0.4);
 }
 
 /* --------------------------------------------------------------------------
-   3. Paleta LIGHT — se activa automáticamente según el sistema/navegador
+   3. Paleta LIGHT — se activa con data-theme="light" en <html>
    -------------------------------------------------------------------------- */
-@media (prefers-color-scheme: light) {
-    :root {
-        --color-bg:            #f6f7f9;
-        --color-bg-soft:       #ffffff;
-        --color-surface:       #eef0f3;
-        --color-border:        #dde1e7;
-        --color-text:          #1d2129;
-        --color-text-muted:    #5b6472;
-        --color-accent:        #0f9d6b;
-        --color-accent-strong: #0b8558;
-        --color-accent-dim:    rgba(15, 157, 107, 0.10);
-        --color-on-accent:     #ffffff;
-        --shadow-card:         0 1px 3px rgba(29, 33, 41, 0.08);
-    }
+:root[data-theme="light"] {
+    --color-bg:            #f7f7f8;
+    --color-bg-soft:       #ffffff;
+    --color-surface:       #eef0f2;
+    --color-border:        #e0e3e8;
+    --color-text:          #171a20;
+    --color-text-muted:    #5b6472;
+    --color-accent:        #d92d20;
+    --color-accent-strong: #b42318;
+    --color-accent-dim:    rgba(217, 45, 32, 0.08);
+    --color-on-accent:     #ffffff;
+    --color-terminal-bg:   #fcfcfd;
+    --color-terminal-bar:  #f0f1f3;
+    --shadow-card:         0 1px 3px rgba(23, 26, 32, 0.08);
 }
 
 /* --------------------------------------------------------------------------
@@ -86,21 +88,110 @@ img {
 }
 
 /* --------------------------------------------------------------------------
-   5. Header — hero alineado con el contenido principal
+   5. Navegación — Flexbox · integrada con la identidad del hero
    -------------------------------------------------------------------------- */
-header {
+nav {
+    background-color: var(--color-bg-soft);
     border-bottom: 1px solid var(--color-border);
-    padding: var(--space-xl) var(--space-md);
+    position: sticky;
+    top: 0;
+    z-index: 10;
 }
 
-/* El hero comparte el mismo ancho de contenedor que <main> y la <nav> */
-header > * {
+.nav-inner {
+    display: flex;                     /* FLEXBOX */
+    align-items: center;
+    gap: var(--space-md);
     max-width: var(--container-width);
-    margin-left: auto;
+    margin: 0 auto;
+    padding: 0.75rem var(--space-md);
+}
+
+/* Marca estilo prompt de terminal */
+.nav-brand {
+    font-family: var(--font-mono);
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--color-text);
+    text-decoration: none;
     margin-right: auto;
 }
 
-/* Etiqueta técnica sobre el nombre */
+.nav-brand span {
+    color: var(--color-accent);
+}
+
+nav ul {
+    list-style: none;
+    display: flex;                     /* FLEXBOX */
+    align-items: center;
+    gap: var(--space-xs);
+}
+
+nav ul a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.92rem;
+    font-weight: 500;
+    padding: 0.4rem 0.85rem;
+    border-radius: var(--radius-sm);
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+nav ul a:hover {
+    color: var(--color-text);
+    background-color: var(--color-surface);
+}
+
+/* Botón de cambio de tema (icono sol/luna según el tema activo) */
+.theme-toggle {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.5rem;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.theme-toggle:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+}
+
+.theme-toggle .theme-icon {
+    width: 18px;
+    height: 18px;
+}
+
+/* El icono visible depende del tema: en oscuro se muestra el sol,
+   en claro se muestra la luna (porque el click cambia al otro). */
+.theme-toggle svg {
+    display: none;
+}
+
+:root:not([data-theme="light"]) .icon-sun  { display: block; }
+:root:not([data-theme="light"]) .icon-moon { display: none; }
+:root[data-theme="light"]       .icon-sun  { display: none; }
+:root[data-theme="light"]       .icon-moon { display: block; }
+
+/* --------------------------------------------------------------------------
+   6. Hero — composición en dos columnas con CSS Grid
+   -------------------------------------------------------------------------- */
+.hero {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: var(--space-xl) var(--space-md);
+    display: grid;                     /* CSS GRID */
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: var(--space-lg);
+    align-items: center;
+    border-bottom: 1px solid var(--color-border);
+}
+
 .hero-label {
     font-family: var(--font-mono);
     color: var(--color-accent);
@@ -111,15 +202,13 @@ header > * {
     margin-bottom: var(--space-sm);
 }
 
-/* Nombre: elemento visual principal */
-header h1 {
+.hero h1 {
     font-size: 3.5rem;
     font-weight: 700;
     letter-spacing: -0.03em;
     line-height: 1.1;
 }
 
-/* Subtítulo del hero */
 .hero-subtitle {
     font-family: var(--font-mono);
     color: var(--color-text-muted);
@@ -127,44 +216,126 @@ header h1 {
     margin-top: var(--space-sm);
 }
 
-/* --------------------------------------------------------------------------
-   6. Navegación — Flexbox horizontal
-   -------------------------------------------------------------------------- */
-nav {
-    background-color: var(--color-bg-soft);
-    border-bottom: 1px solid var(--color-border);
-    position: sticky;
-    top: 0;
-    z-index: 10;
+.hero-intro {
+    color: var(--color-text-muted);
+    font-size: 1.05rem;
+    max-width: 52ch;
+    margin-top: var(--space-md);
 }
 
-nav ul {
-    list-style: none;
+/* Acciones del hero — Flexbox */
+.hero-actions {
     display: flex;                     /* FLEXBOX */
     align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-md);
+}
+
+/* Botones */
+.btn {
+    display: inline-flex;              /* FLEXBOX */
+    align-items: center;
     gap: var(--space-xs);
-    max-width: var(--container-width);
-    margin: 0 auto;
-    padding: 0.75rem var(--space-md);
-}
-
-nav a {
-    color: var(--color-text-muted);
-    text-decoration: none;
-    font-size: 0.92rem;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
     font-weight: 500;
-    padding: 0.4rem 0.85rem;
-    border-radius: var(--radius-sm);
-    transition: color 0.15s ease, background-color 0.15s ease;
+    text-decoration: none;
+    padding: 0.75rem 1.35rem;
+    border-radius: var(--radius-md);
+    border: 1px solid transparent;
 }
 
-nav a:hover {
+.btn-primary {
+    background-color: var(--color-accent);
+    border-color: var(--color-accent);
+    color: var(--color-on-accent);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-strong);
+    border-color: var(--color-accent-strong);
+}
+
+.btn-secondary {
+    background-color: var(--color-bg-soft);
+    border-color: var(--color-border);
     color: var(--color-text);
+}
+
+.btn-secondary:hover {
     background-color: var(--color-surface);
+    border-color: var(--color-text-muted);
+}
+
+/* Columna derecha del hero — Flexbox vertical */
+.hero-side {
+    display: flex;                     /* FLEXBOX */
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+/* Avatar con anillo de acento */
+.hero-avatar {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    border: 3px solid var(--color-accent);
+    box-shadow: var(--shadow-card);
 }
 
 /* --------------------------------------------------------------------------
-   7. Secciones generales
+   7. Terminal — bloque técnico construido con HTML + CSS
+   -------------------------------------------------------------------------- */
+.terminal {
+    width: 100%;
+    background-color: var(--color-terminal-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    font-family: var(--font-mono);
+    box-shadow: var(--shadow-card);
+}
+
+/* Barra superior de la ventana — Flexbox */
+.terminal-bar {
+    display: flex;                     /* FLEXBOX */
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.6rem 0.85rem;
+    background-color: var(--color-terminal-bar);
+    border-bottom: 1px solid var(--color-border);
+}
+
+.terminal-dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    background-color: var(--color-border);
+}
+
+.terminal-title {
+    margin-left: auto;
+    font-size: 0.75rem;
+    color: var(--color-text-muted);
+}
+
+.terminal-body {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 0.85rem;
+    line-height: 1.7;
+}
+
+.terminal-prompt {
+    color: var(--color-accent);
+}
+
+.terminal-output {
+    color: var(--color-text-muted);
+}
+
+/* --------------------------------------------------------------------------
+   8. Secciones generales
    -------------------------------------------------------------------------- */
 main {
     max-width: var(--container-width);
@@ -176,7 +347,7 @@ section {
     margin-bottom: var(--space-xl);
 }
 
-/* Títulos de sección con marcador de acento — FLEXBOX para alinear */
+/* Títulos de sección con marcador de acento — Flexbox */
 section h2 {
     font-size: 1.35rem;
     font-weight: 600;
@@ -204,14 +375,13 @@ section p + p {
     margin-top: var(--space-sm);
 }
 
-/* Presentación: cuerpo cómodo de leer */
 #presentacion p {
     max-width: 65ch;
     font-size: 1.05rem;
 }
 
 /* --------------------------------------------------------------------------
-   8. Habilidades — grilla con CSS Grid
+   9. Habilidades — grilla con CSS Grid
    -------------------------------------------------------------------------- */
 #habilidades ul {
     list-style: none;
@@ -232,47 +402,30 @@ section p + p {
 }
 
 #habilidades li:hover {
-    border-left-color: var(--color-accent-strong);
     background-color: var(--color-surface);
+    border-left-color: var(--color-accent-strong);
 }
 
 /* --------------------------------------------------------------------------
-   9. Sobre mí
+   10. Sobre mí
    -------------------------------------------------------------------------- */
 #personal p {
     max-width: 68ch;
 }
 
 /* --------------------------------------------------------------------------
-   10. Contacto — GitHub como llamada a la acción
+   11. Contacto
    -------------------------------------------------------------------------- */
 #contacto p {
     color: var(--color-text);
 }
 
-#contacto a {
-    display: inline-flex;              /* FLEXBOX */
-    align-items: center;
-    gap: var(--space-xs);
-    background-color: var(--color-accent);
-    border: 1px solid var(--color-accent);
-    color: var(--color-on-accent);
-    text-decoration: none;
-    font-family: var(--font-mono);
-    font-size: 0.95rem;
-    font-weight: 500;
-    padding: 0.85rem 1.5rem;
-    border-radius: var(--radius-md);
-    margin-top: var(--space-sm);
-}
-
-#contacto a:hover {
-    background-color: var(--color-accent-strong);
-    border-color: var(--color-accent-strong);
+#contacto .btn {
+    margin-top: var(--space-xs);
 }
 
 /* --------------------------------------------------------------------------
-   11. Footer
+   12. Footer
    -------------------------------------------------------------------------- */
 footer {
     border-top: 1px solid var(--color-border);
@@ -281,4 +434,17 @@ footer {
     color: var(--color-text-muted);
     font-size: 0.85rem;
     font-family: var(--font-mono);
+}
+
+/* Enlace "volver al inicio" del footer */
+.footer-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    margin-top: var(--space-sm);
+}
+
+.footer-link:hover {
+    color: var(--color-text);
 }
