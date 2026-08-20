@@ -1,0 +1,229 @@
+/* ==========================================================================
+   PFO1 · Desarrollo de Sistemas Web · Front End
+   Portfolio personal — Mariano Arenas
+   Versión visual 1 · CSS puro · tema oscuro / identidad técnica DevOps
+   ========================================================================== */
+
+/* --------------------------------------------------------------------------
+   1. Variables globales
+   -------------------------------------------------------------------------- */
+:root {
+    /* Colores */
+    --color-bg:            #16181d;   /* gris muy oscuro, no negro puro */
+    --color-bg-soft:       #1e2129;   /* fondo de tarjetas / superficies */
+    --color-surface:       #23272f;   /* superficies interiores           */
+    --color-border:        #2c313b;   /* bordes sutiles                    */
+    --color-text:          #e6e8ec;   /* texto principal                   */
+    --color-text-muted:    #9aa1ad;   /* texto secundario                  */
+    --color-accent:        #3ecf8e;   /* acento verde técnico              */
+    --color-accent-dim:    rgba(62, 207, 142, 0.12);
+
+    /* Tipografías */
+    --font-main: 'Inter', system-ui, sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+
+    /* Espaciados */
+    --space-xs:  0.5rem;
+    --space-sm:  1rem;
+    --space-md:  2rem;
+    --space-lg:  4rem;
+
+    /* Radios de borde */
+    --radius-sm: 6px;
+    --radius-md: 10px;
+
+    /* Layout */
+    --container-width: 960px;
+}
+
+/* --------------------------------------------------------------------------
+   2. Reseteo y estilos generales
+   -------------------------------------------------------------------------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-main);
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* --------------------------------------------------------------------------
+   3. Header — presentación principal (hero)
+   -------------------------------------------------------------------------- */
+header {
+    border-bottom: 1px solid var(--color-border);
+    padding: var(--space-lg) var(--space-md);
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+/* Subtítulo del header con aire técnico (mono) */
+header p {
+    font-family: var(--font-mono);
+    color: var(--color-accent);
+    font-size: 0.95rem;
+    margin-top: var(--space-xs);
+}
+
+/* --------------------------------------------------------------------------
+   4. Navegación — Flexbox horizontal
+   -------------------------------------------------------------------------- */
+nav {
+    border-bottom: 1px solid var(--color-border);
+    background-color: var(--color-bg-soft);
+    position: sticky;
+    top: 0;
+    z-index: 10;
+}
+
+nav ul {
+    list-style: none;
+    display: flex;                     /* FLEXBOX */
+    align-items: center;
+    gap: var(--space-sm);
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: var(--space-sm) var(--space-md);
+}
+
+nav a {
+    color: var(--color-text-muted);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--radius-sm);
+    transition: color 0.15s ease, background-color 0.15s ease;
+}
+
+nav a:hover {
+    color: var(--color-text);
+    background-color: var(--color-surface);
+}
+
+/* --------------------------------------------------------------------------
+   5. Secciones generales
+   -------------------------------------------------------------------------- */
+main {
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: var(--space-lg) var(--space-md) var(--space-md);
+}
+
+section {
+    margin-bottom: var(--space-lg);
+}
+
+section h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: var(--space-sm);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+}
+
+section h2::after {
+    content: "";
+    display: inline-block;
+    width: 0.5em;
+    height: 1.5em;
+    margin-left: 0.4rem;
+    vertical-align: text-bottom;
+    background-color: var(--color-accent);
+    border-radius: 2px;
+}
+
+section p {
+    color: var(--color-text-muted);
+}
+
+/* Bloque de presentación / hero: apila texto, dos párrafos */
+#presentacion p {
+    max-width: 62ch;
+}
+
+#presentacion p + p {
+    margin-top: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   6. Habilidades — grilla con CSS Grid
+   -------------------------------------------------------------------------- */
+#habilidades ul {
+    list-style: none;
+    display: grid;                     /* CSS GRID */
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--space-sm);
+}
+
+#habilidades li {
+    background-color: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-accent);
+    border-radius: var(--radius-sm);
+    padding: var(--space-sm);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+}
+
+/* --------------------------------------------------------------------------
+   7. Sobre mí
+   -------------------------------------------------------------------------- */
+#personal p {
+    max-width: 65ch;
+}
+
+#personal p + p {
+    margin-top: var(--space-sm);
+}
+
+/* --------------------------------------------------------------------------
+   8. Contacto — enlace destacado
+   -------------------------------------------------------------------------- */
+#contacto p {
+    color: var(--color-text);
+}
+
+#contacto a {
+    display: inline-block;
+    background-color: var(--color-accent-dim);
+    border: 1px solid var(--color-accent);
+    color: var(--color-accent);
+    text-decoration: none;
+    font-family: var(--font-mono);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: var(--radius-md);
+    margin-top: var(--space-xs);
+}
+
+#contacto a:hover {
+    background-color: var(--color-accent);
+    color: var(--color-bg);
+}
+
+/* --------------------------------------------------------------------------
+   9. Footer
+   -------------------------------------------------------------------------- */
+footer {
+    border-top: 1px solid var(--color-border);
+    padding: var(--space-md);
+    text-align: center;
+    color: var(--color-text-muted);
+    font-size: 0.85rem;
+    font-family: var(--font-mono);
+}
