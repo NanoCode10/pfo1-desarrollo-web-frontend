@@ -74,6 +74,11 @@
     box-sizing: border-box;
 }
 
+/* Desplazamiento suave para la navegación interna */
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-color: var(--color-bg);
     color: var(--color-text);
@@ -347,6 +352,11 @@ section {
     margin-bottom: var(--space-xl);
 }
 
+/* Compensa la altura del navbar sticky al saltar a cada sección */
+section[id] {
+    scroll-margin-top: 5rem;
+}
+
 /* Títulos de sección con marcador de acento — Flexbox */
 section h2 {
     font-size: 1.35rem;
@@ -386,7 +396,7 @@ section p + p {
 #habilidades ul {
     list-style: none;
     display: grid;                     /* CSS GRID */
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    grid-template-columns: repeat(5, minmax(0, 1fr));
     gap: var(--space-sm);
 }
 
@@ -416,6 +426,10 @@ section p + p {
 /* --------------------------------------------------------------------------
    11. Contacto
    -------------------------------------------------------------------------- */
+#contacto {
+    margin-bottom: var(--space-md);
+}
+
 #contacto p {
     color: var(--color-text);
 }
@@ -436,15 +450,28 @@ footer {
     font-family: var(--font-mono);
 }
 
-/* Enlace "volver al inicio" del footer */
-.footer-link {
+/* Botón circular "volver al inicio", alineado a la derecha al pie de página */
+.back-to-top {
+    display: flex;
+    justify-content: flex-end;
+    max-width: var(--container-width);
+    margin: 0 auto;
+    padding: 0 var(--space-md) var(--space-md);
+}
+
+.back-to-top a {
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    color: var(--color-text-muted);
-    margin-top: var(--space-sm);
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    background-color: var(--color-bg-soft);
+    border: 1px solid var(--color-border);
+    color: var(--color-text);
 }
 
-.footer-link:hover {
-    color: var(--color-text);
+.back-to-top a:hover {
+    background-color: var(--color-surface);
+    color: var(--color-accent);
 }
