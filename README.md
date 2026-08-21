@@ -22,12 +22,20 @@ como apoyo para planificación, implementación y revisión.
 
 ### Herramientas utilizadas
 
-- ChatGPT: análisis de la consigna, planificación, revisión visual,
-  revisión de código y definición de cambios.
-- OpenCode con el agente Max.
-- DeepSeek V4 Flash Free: tareas acotadas de implementación y ajustes
+- **ChatGPT:** análisis de la consigna, planificación de etapas, revisión visual,
+  revisión técnica y definición de cambios.
+
+- **OpenCode con el agente Max:** entorno utilizado para realizar las
+  modificaciones sobre el proyecto.
+
+- **DeepSeek V4 Flash Free (OpenCode Zen):** utilizado principalmente para
+  la implementación inicial y para modificaciones puntuales posteriores
   sobre HTML, CSS y JavaScript.
-- Kimi K3: exploración y mejora de la composición visual.
+
+- **Kimi K3:** utilizado durante una etapa de rediseño visual para explorar
+  una composición con mayor identidad técnica, a partir de la cual se
+  definieron el hero en dos columnas, la terminal visual, el avatar y la
+  estética basada en negro, blanco, grises y rojo.
 
 ### Metodología
 
