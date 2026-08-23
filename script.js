@@ -42,6 +42,34 @@ document.querySelectorAll('.mobile-menu-list a').forEach((enlace) => {
     });
 });
 
+// Modal de contacto: <dialog> nativo, sin backend. Escape y el ::backdrop
+// ya los resuelve el navegador solo; acá abrimos, cerramos y manejamos el submit.
+const contactDialog = document.getElementById('contact-dialog');
+const contactForm = document.getElementById('contact-form');
+const contactStatus = contactForm.querySelector('.form-status');
+
+document.getElementById('contact-open').addEventListener('click', () => {
+    contactDialog.showModal();
+});
+
+contactDialog.querySelector('.dialog-close').addEventListener('click', () => {
+    contactDialog.close();
+});
+
+// "close" cubre tanto el botón de cerrar como la tecla Escape:
+// deja el formulario listo para la próxima vez que se abra.
+contactDialog.addEventListener('close', () => {
+    contactForm.reset();
+    contactStatus.textContent = '';
+});
+
+// Si llegamos acá, la validación HTML5 (required, type="email") ya aprobó
+// los datos: solo evitamos el envío real (no hay servidor) y avisamos.
+contactForm.addEventListener('submit', (evento) => {
+    evento.preventDefault();
+    contactStatus.textContent = 'Formulario de demostración: los datos fueron validados localmente y no se envían a ningún servidor.';
+});
+
 // La landing siempre debe abrir en el hero/inicio, y no reanudar la
 // posición de una sección previa al recargar (p. ej. con #habilidades).
 if ('scrollRestoration' in history) {

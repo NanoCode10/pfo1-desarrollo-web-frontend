@@ -283,6 +283,10 @@ nav ul a:hover {
     padding: 0.75rem 1.35rem;
     border-radius: var(--radius-md);
     border: 1px solid transparent;
+    /* El botón "Contacto" es un <button>, no un <a>: sin esto no hereda
+       el cursor ni pierde el estilo nativo del navegador. */
+    cursor: pointer;
+    appearance: none;
 }
 
 .btn-primary {
@@ -519,6 +523,117 @@ footer {
 .back-to-top a:hover {
     background-color: var(--color-surface);
     color: var(--color-accent);
+}
+
+/* --------------------------------------------------------------------------
+   13. Modal de contacto — <dialog> nativo con formulario de demostración
+   -------------------------------------------------------------------------- */
+#contact-dialog {
+    /* El reset global "* { margin: 0 }" pisa el margin:auto que el navegador
+       usa para centrar <dialog>; se restaura acá para que no quede pegado
+       arriba a la izquierda. */
+    margin: auto;
+    /* Ancho fluido con tope: entra completo en cualquier viewport sin
+       necesitar un breakpoint propio para el modal. */
+    width: min(92vw, 480px);
+    max-height: min(88vh, 640px);
+    overflow-y: auto;
+    padding: var(--space-md);
+    background-color: var(--color-bg-soft);
+    color: var(--color-text);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+}
+
+#contact-dialog::backdrop {
+    background-color: rgba(0, 0, 0, 0.55);
+}
+
+.dialog-head {
+    display: flex;
+    /* FLEXBOX */
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-bottom: var(--space-sm);
+}
+
+.dialog-head h2 {
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.dialog-close {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    background: none;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+    padding: 0.4rem;
+    cursor: pointer;
+    line-height: 0;
+}
+
+.dialog-close:hover {
+    color: var(--color-text);
+    border-color: var(--color-text-muted);
+}
+
+.dialog-intro {
+    color: var(--color-text-muted);
+    font-size: 0.9rem;
+    margin-bottom: var(--space-md);
+}
+
+.form-field {
+    display: flex;
+    /* FLEXBOX */
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: var(--space-sm);
+}
+
+.form-field label {
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    color: var(--color-text-muted);
+}
+
+.form-field input,
+.form-field textarea {
+    font-family: var(--font-main);
+    font-size: 0.95rem;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    padding: 0.6rem 0.75rem;
+}
+
+.form-field textarea {
+    resize: vertical;
+    min-height: 5rem;
+}
+
+.form-field input:focus-visible,
+.form-field textarea:focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 1px;
+}
+
+.form-status {
+    min-height: 1.2rem;
+    font-size: 0.85rem;
+    color: var(--color-accent);
+    margin-bottom: var(--space-sm);
+}
+
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end;
 }
 
 /* ==========================================================================
