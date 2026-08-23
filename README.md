@@ -102,7 +102,9 @@ El proyecto no cuenta con una suite de tests automatizados; las verificaciones s
 
 ## Deploy
 
-_(Pendiente de definir)._
+La versión pública del proyecto está desplegada en Vercel:
+
+https://pfo1-desarrollo-web-frontend.vercel.app/
 
 ## Autor
 
