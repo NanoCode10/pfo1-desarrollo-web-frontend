@@ -29,7 +29,7 @@ El proyecto aplica contenidos vistos en la materia:
 - **Presentación**: texto breve de introducción sobre el contexto del portfolio.
 - **Habilidades**: listado de tecnologías y herramientas.
 - **Sobre mí**: texto ampliado sobre intereses y motivación.
-- **Contacto**: enlace al perfil de GitHub.
+- **Contacto**: enlace al perfil de GitHub, y en el hero un botón de correo directo (`mailto:`) y un botón que abre un formulario de contacto en un modal.
 - **Footer**: información de la materia y el cuatrimestre.
 
 ## Funcionalidades
@@ -41,6 +41,8 @@ El proyecto aplica contenidos vistos en la materia:
 - Terminal visual del hero.
 - Botón "Volver arriba".
 - Enlace a GitHub.
+- Botón de correo directo (`mailto:`) en el hero.
+- Botón "Formulario" que abre un formulario de contacto en un modal (`<dialog>` nativo), con validación HTML5 y un mensaje de confirmación local. Es una demostración de Front End: el proyecto es estático y no tiene backend, así que el formulario no envía datos a ningún servidor.
 - Diseño responsive.
 
 ## Responsive
@@ -63,6 +65,7 @@ Para lograrlo se utilizaron media queries junto con Flexbox y CSS Grid, ajustand
 - Áreas táctiles adecuadas en los botones del hero para uso en mobile.
 - Uso de `<details>`/`<summary>` para el menú de navegación mobile.
 - Atributos `rel="noopener noreferrer"` en los enlaces externos a GitHub.
+- Formulario de contacto con `<label>` asociado a cada campo mediante `for`/`id`, validación HTML5 (`required`, `type="email"`) y modal (`<dialog>`) con título asociado, botón de cierre con `aria-label` y cierre nativo con Escape.
 
 ## Estructura del proyecto
 
@@ -105,6 +108,41 @@ El proyecto no cuenta con una suite de tests automatizados; las verificaciones s
 La versión pública del proyecto está desplegada en Vercel:
 
 https://pfo1-desarrollo-web-frontend.vercel.app/
+
+## Uso de inteligencia artificial
+
+### Herramientas utilizadas
+
+Durante el desarrollo se utilizaron herramientas de asistencia basadas en IA. Entre las utilizadas durante el proyecto estuvieron:
+
+- **ChatGPT** (plan Plus): análisis de la consigna, planificación de etapas, revisión visual y técnica, y definición de cambios.
+- **Claude Code**: usado en las etapas finales del proyecto para el ajuste responsive, la integración del formulario de contacto, la revisión de accesibilidad, la gestión del historial de Git y la redacción de esta documentación.
+- **OpenCode** (con el agente Max, y los modelos DeepSeek V4 Flash Free y Kimi K3 a través de OpenCode Zen): utilizado en etapas anteriores para la implementación inicial de HTML/CSS/JS y para una etapa de rediseño visual, de la que salieron el hero en dos columnas, la terminal, el avatar y la paleta negro/blanco/gris/rojo.
+
+El plan utilizado en Claude Code, OpenCode y los modelos accedidos por OpenCode Zen no se detalla porque no puede confirmarse con precisión al redactar esta sección.
+
+### Experiencia previa
+
+Ya existía experiencia previa utilizando asistentes de IA y herramientas de desarrollo asistido antes de esta PFO. Aun así, las decisiones de diseño y cada modificación puntual del proyecto fueron revisadas manualmente antes de incorporarlas al repositorio.
+
+### Cómo se utilizó
+
+En términos generales, la IA se usó para:
+
+- analizar la consigna y planificar las etapas del trabajo;
+- proponer código HTML, CSS y JavaScript;
+- revisar y ajustar estilos, estructura y JavaScript ya escritos;
+- debugging del comportamiento responsive en distintos viewports;
+- revisar aspectos de accesibilidad (labels, `alt`, foco, contraste);
+- ayudar a redactar y ordenar esta documentación.
+
+### Criterio propio y revisión
+
+- El código generado o propuesto por IA fue revisado antes de incorporarlo.
+- Los cambios se probaron en el navegador, incluyendo distintos tamaños de pantalla y ambos temas.
+- Las propuestas se adaptaron al nivel y a las tecnologías permitidas en la materia, sin frameworks ni librerías.
+- Se descartaron soluciones innecesariamente complejas en favor de la alternativa más simple que cumpliera el objetivo.
+- La versión final fue verificada manualmente antes de la entrega.
 
 ## Autor
 
