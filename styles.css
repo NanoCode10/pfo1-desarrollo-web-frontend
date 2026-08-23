@@ -483,8 +483,15 @@ section p+p {
     color: var(--color-text);
 }
 
-#contacto .btn {
-    margin-top: var(--space-xs);
+/* Fila de acciones de contacto — Flexbox, con wrap para no forzar
+   un breakpoint propio si las tres opciones no entran en una fila */
+.contact-actions {
+    display: flex;
+    /* FLEXBOX */
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-sm);
+    margin-top: var(--space-sm);
 }
 
 /* --------------------------------------------------------------------------
@@ -548,6 +555,49 @@ footer {
 
 #contact-dialog::backdrop {
     background-color: rgba(0, 0, 0, 0.55);
+}
+
+/* Transición de apertura: el <dialog> pasa de oculto a "open" de golpe,
+   así que la animación se dispara sobre el propio selector [open] en vez
+   de una transition (que no tendría un estado inicial del que partir). */
+@keyframes dialog-in {
+    from {
+        opacity: 0;
+        transform: translateY(10px) scale(0.98);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes dialog-backdrop-in {
+    from {
+        background-color: rgba(0, 0, 0, 0);
+    }
+
+    to {
+        background-color: rgba(0, 0, 0, 0.55);
+    }
+}
+
+#contact-dialog[open] {
+    animation: dialog-in 200ms ease-out;
+}
+
+#contact-dialog[open]::backdrop {
+    animation: dialog-backdrop-in 200ms ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    #contact-dialog[open] {
+        animation: none;
+    }
+
+    #contact-dialog[open]::backdrop {
+        animation: none;
+    }
 }
 
 .dialog-head {
