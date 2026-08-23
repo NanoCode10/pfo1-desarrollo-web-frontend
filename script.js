@@ -34,6 +34,14 @@ document.querySelectorAll('.theme-toggle').forEach((boton) => {
     });
 });
 
+// Menú hamburguesa: al elegir una sección, cierra el <details> mobile
+// (el navegador ya mantiene aria-expanded del summary en sincronía con "open").
+document.querySelectorAll('.mobile-menu-list a').forEach((enlace) => {
+    enlace.addEventListener('click', () => {
+        enlace.closest('.mobile-menu').open = false;
+    });
+});
+
 // La landing siempre debe abrir en el hero/inicio, y no reanudar la
 // posición de una sección previa al recargar (p. ej. con #habilidades).
 if ('scrollRestoration' in history) {
