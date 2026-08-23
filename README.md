@@ -25,11 +25,11 @@ El proyecto aplica contenidos vistos en la materia:
 
 ## Secciones del sitio
 
-- **Hero / presentación inicial**: encabezado con nombre, rol, una breve introducción, botones de acción y una terminal visual decorativa.
+- **Hero / presentación inicial**: encabezado con nombre, rol, una breve introducción, accesos rápidos a Habilidades y Contacto, y una terminal visual decorativa.
 - **Presentación**: texto breve de introducción sobre el contexto del portfolio.
 - **Habilidades**: listado de tecnologías y herramientas.
 - **Sobre mí**: texto ampliado sobre intereses y motivación.
-- **Contacto**: enlace al perfil de GitHub, y en el hero un botón de correo directo (`mailto:`) y un botón que abre un formulario de contacto en un modal.
+- **Contacto**: las tres vías reales para contactarme — correo directo (`mailto:`), un formulario de contacto en un modal y el enlace al perfil de GitHub.
 - **Footer**: información de la materia y el cuatrimestre.
 
 ## Funcionalidades
@@ -41,8 +41,7 @@ El proyecto aplica contenidos vistos en la materia:
 - Terminal visual del hero.
 - Botón "Volver arriba".
 - Enlace a GitHub.
-- Botón de correo directo (`mailto:`) en el hero.
-- Botón "Formulario" que abre un formulario de contacto en un modal (`<dialog>` nativo), con validación HTML5 y un mensaje de confirmación local. Es una demostración de Front End: el proyecto es estático y no tiene backend, así que el formulario no envía datos a ningún servidor.
+- En la sección Contacto: botón de correo directo (`mailto:`), botón "Formulario" que abre un formulario de contacto en un modal (`<dialog>` nativo, con validación HTML5 y un mensaje de confirmación local) y enlace a GitHub. Es una demostración de Front End: el proyecto es estático y no tiene backend, así que el formulario no envía datos a ningún servidor.
 - Diseño responsive.
 
 ## Responsive
