@@ -1,57 +1,110 @@
-# PFO1 - Desarrollo de Sistemas Web · Front End
+# PFO1 - Portfolio personal
 
-Este repositorio corresponde a la PFO1 de la materia **Desarrollo de Sistemas Web · Front End · 2026 · 2do Cuatrimestre**.
+Proyecto correspondiente a la materia **Desarrollo de Sistemas Web (Front End)**.
 
-## Proceso de desarrollo
+## Descripción
 
-El proyecto se desarrolló de manera incremental, manteniendo un historial
-de commits por etapas:
+Portfolio personal responsive, desarrollado con HTML5, CSS y JavaScript vanilla, sin frameworks ni librerías externas.
 
-1. Creación de la estructura inicial.
-2. Incorporación de HTML semántico.
-3. Reemplazo de contenido placeholder por información real.
-4. Primera versión de estilos CSS.
-5. Incorporación de temas claro y oscuro.
-6. Definición de una identidad visual orientada a sistemas y DevOps.
-7. Incorporación de un selector manual de tema.
+## Objetivo
 
-## Uso de inteligencia artificial
+El proyecto aplica contenidos vistos en la materia:
 
-Durante el desarrollo se utilizaron herramientas de inteligencia artificial
-como apoyo para planificación, implementación y revisión.
+- estructura semántica HTML;
+- maquetación y estilos CSS;
+- Flexbox y Grid;
+- responsive design;
+- interacción básica con JavaScript.
 
-### Herramientas utilizadas
+## Tecnologías utilizadas
 
-- **ChatGPT:** análisis de la consigna, planificación de etapas, revisión visual,
-  revisión técnica y definición de cambios.
+- HTML5
+- CSS3
+- JavaScript vanilla
+- Git / GitHub
 
-- **OpenCode con el agente Max:** entorno utilizado para realizar las
-  modificaciones sobre el proyecto.
+## Secciones del sitio
 
-- **DeepSeek V4 Flash Free (OpenCode Zen):** utilizado principalmente para
-  la implementación inicial y para modificaciones puntuales posteriores
-  sobre HTML, CSS y JavaScript.
+- **Hero / presentación inicial**: encabezado con nombre, rol, una breve introducción, botones de acción y una terminal visual decorativa.
+- **Presentación**: texto breve de introducción sobre el contexto del portfolio.
+- **Habilidades**: listado de tecnologías y herramientas.
+- **Sobre mí**: texto ampliado sobre intereses y motivación.
+- **Contacto**: enlace al perfil de GitHub.
+- **Footer**: información de la materia y el cuatrimestre.
 
-- **Kimi K3:** utilizado durante una etapa de rediseño visual para explorar
-  una composición con mayor identidad técnica, a partir de la cual se
-  definieron el hero en dos columnas, la terminal visual, el avatar y la
-  estética basada en negro, blanco, grises y rojo.
+## Funcionalidades
 
-### Metodología
+- Navegación mediante anchors a las distintas secciones.
+- Menú hamburguesa responsive.
+- Cierre automático del menú mobile al seleccionar una sección.
+- Cambio de tema dark/light.
+- Terminal visual del hero.
+- Botón "Volver arriba".
+- Enlace a GitHub.
+- Diseño responsive.
 
-La PFO no fue generada completa mediante una única instrucción.
+## Responsive
 
-El trabajo se realizó por etapas. Para cada cambio se definió primero el
-objetivo, luego se utilizó IA como apoyo para implementarlo y finalmente
-se revisó el resultado antes de incorporarlo al repositorio.
+El sitio fue adaptado y verificado en distintos tamaños de pantalla. Se tomaron como referencia los siguientes tamaños:
 
-Entre las decisiones modificadas con criterio propio se encuentran:
+- 375x667
+- 390x844
+- 480x800
+- 768x1024
+- Desktop 1440x900
 
-- reemplazar la paleta verde inicial por negro, blanco, grises y rojo;
-- orientar la estética hacia sistemas y DevOps;
-- incorporar el avatar de NanoCode;
-- crear una terminal visual con HTML y CSS;
-- reemplazar textos de presentación que resultaban repetitivos;
-- simplificar los botones del hero;
-- utilizar SVG para el selector de tema;
-- mantener el proyecto sin frameworks ni librerías CSS.
+Para lograrlo se utilizaron media queries junto con Flexbox y CSS Grid, ajustando la composición general, la navegación, el avatar, los botones del hero y la terminal según el ancho de pantalla disponible.
+
+## Accesibilidad y buenas prácticas
+
+- HTML semántico (`header`, `nav`, `main`, `section`, `footer`).
+- Imágenes con texto alternativo: el avatar del hero incluye un `alt` descriptivo, y su versión decorativa en mobile usa `alt=""` junto con `aria-hidden="true"`.
+- Navegación mediante enlaces internos (anchors).
+- Áreas táctiles adecuadas en los botones del hero para uso en mobile.
+- Uso de `<details>`/`<summary>` para el menú de navegación mobile.
+- Atributos `rel="noopener noreferrer"` en los enlaces externos a GitHub.
+
+## Estructura del proyecto
+
+```
+.
+├── index.html
+├── styles.css
+├── script.js
+├── assets/
+│   └── avatar-nanocode.png
+├── .gitignore
+└── README.md
+```
+
+## Ejecución local
+
+Al ser un proyecto estático, alcanza con:
+
+- abrir `index.html` directamente en el navegador; o
+- utilizar la extensión Live Server de Visual Studio Code.
+
+No se requieren dependencias ni instalación adicional.
+
+## Verificaciones realizadas
+
+Durante la revisión final se comprobó:
+
+- ausencia de overflow horizontal en los viewports revisados;
+- navegación por anchors funcionando correctamente;
+- cierre del menú hamburguesa al seleccionar una sección;
+- funcionamiento del modo dark y light;
+- funcionamiento del botón "Volver arriba";
+- carga correcta del avatar;
+- ausencia de errores de JavaScript relevantes en la consola.
+
+El proyecto no cuenta con una suite de tests automatizados; las verificaciones se realizaron de forma manual.
+
+## Deploy
+
+_(Pendiente de definir)._
+
+## Autor
+
+**Mariano Arenas**
+GitHub: [NanoCode10](https://github.com/NanoCode10)
