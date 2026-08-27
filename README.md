@@ -8,7 +8,8 @@ Portfolio personal responsive, desarrollado con HTML5, CSS y JavaScript vanilla,
 
 ## Enlaces
 
-- **Sitio publicado (Vercel):** https://pfo1-desarrollo-web-frontend.vercel.app/
+- **Portfolio:** https://portfolio.nanocode10.dev
+- **Deploy alternativo (Vercel):** https://pfo1-desarrollo-web-frontend.vercel.app/
 - **Repositorio:** https://github.com/NanoCode10/pfo1-desarrollo-web-frontend
 - **Perfil de GitHub:** https://github.com/NanoCode10
 
@@ -110,7 +111,9 @@ El proyecto no cuenta con una suite de tests automatizados; las verificaciones s
 
 ## Deploy
 
-La versión pública del proyecto está desplegada en Vercel (ver **Enlaces** al comienzo de este documento).
+El sitio principal del proyecto es **https://portfolio.nanocode10.dev**.
+
+Se mantiene además una publicación alternativa en Vercel. Ambas direcciones sirven la misma versión del proyecto y figuran en **Enlaces**, al comienzo de este documento.
 
 ## Uso de inteligencia artificial
 
