@@ -6,6 +6,12 @@ Proyecto correspondiente a la materia **Desarrollo de Sistemas Web (Front End)**
 
 Portfolio personal responsive, desarrollado con HTML5, CSS y JavaScript vanilla, sin frameworks ni librerías externas.
 
+## Enlaces
+
+- **Sitio publicado (Vercel):** https://pfo1-desarrollo-web-frontend.vercel.app/
+- **Repositorio:** https://github.com/NanoCode10/pfo1-desarrollo-web-frontend
+- **Perfil de GitHub:** https://github.com/NanoCode10
+
 ## Objetivo
 
 El proyecto aplica contenidos vistos en la materia:
@@ -104,9 +110,7 @@ El proyecto no cuenta con una suite de tests automatizados; las verificaciones s
 
 ## Deploy
 
-La versión pública del proyecto está desplegada en Vercel:
-
-https://pfo1-desarrollo-web-frontend.vercel.app/
+La versión pública del proyecto está desplegada en Vercel (ver **Enlaces** al comienzo de este documento).
 
 ## Uso de inteligencia artificial
 
