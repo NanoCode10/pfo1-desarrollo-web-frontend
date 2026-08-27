@@ -12,10 +12,13 @@
     <script src="script.js" defer></script>
 </head>
 <body>
+    <!-- Salto de contenido: oculto salvo al recibir foco por teclado -->
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
     <!-- Navegación principal: marca, links a las secciones y menú hamburguesa para mobile -->
     <nav>
         <div class="nav-inner">
-            <a class="nav-brand" href="#inicio"><span>~$</span> mariano</a>
+            <a class="nav-brand" href="#inicio"><span>~$</span> Portfolio - PFO1</a>
             <ul>
                 <li><a href="#presentacion">Presentación</a></li>
                 <li><a href="#habilidades">Habilidades</a></li>
@@ -48,8 +51,10 @@
     <header class="hero" id="inicio">
         <div class="hero-content">
             <p class="hero-label">Técnico en Computación</p>
-            <h1>Mariano Arenas</h1>
-            <img class="hero-avatar-mobile" src="assets/avatar-nanocode.png" alt="" aria-hidden="true" width="96" height="96">
+            <h1><span class="hero-name">Mariano Arenas</span></h1>
+            <span class="hero-avatar-wrap hero-avatar-wrap-mobile">
+                <img class="hero-avatar-mobile" src="assets/avatar-nanocode.png" alt="" aria-hidden="true" width="96" height="96">
+            </span>
             <p class="hero-subtitle">Sistemas · DevOps · <span class="nowrap">Desarrollo de Software</span></p>
             <p class="hero-intro">Me dedico a integrar sistemas, infraestructura y desarrollo de software.
                 Actualmente estoy profundizando en Front End para incorporar también la
@@ -67,7 +72,9 @@
             </div>
         </div>
         <div class="hero-side">
-            <img class="hero-avatar" src="assets/avatar-nanocode.png" alt="Avatar de Mariano Arenas" width="192" height="192">
+            <span class="hero-avatar-wrap">
+                <img class="hero-avatar" src="assets/avatar-nanocode.png" alt="Avatar de Mariano Arenas" width="192" height="192">
+            </span>
             <div class="terminal">
                 <div class="terminal-bar">
                     <span class="terminal-dot"></span>
@@ -86,7 +93,7 @@
     </header>
 
     <!-- Contenido principal: presentación, habilidades, datos personales y contacto -->
-    <main>
+    <main id="contenido" tabindex="-1">
         <section id="presentacion">
             <h2>Presentación</h2>
             <p>Actualmente curso Desarrollo de Sistemas Web Front End como parte de mi formación, incorporando HTML, CSS y JavaScript para ampliar mi experiencia hacia la construcción de interfaces web.</p>

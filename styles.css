@@ -98,6 +98,37 @@ img {
     white-space: nowrap;
 }
 
+/* Skip link: primer elemento tabulable, oculto salvo al recibir foco */
+.skip-link {
+    position: fixed;
+    top: 0;
+    left: var(--space-sm);
+    z-index: 100;
+    transform: translateY(-120%);
+    padding: 0.6rem 1rem;
+    background-color: var(--color-bg-soft);
+    color: var(--color-text);
+    border: 1px solid var(--color-accent);
+    border-top: none;
+    border-radius: 0 0 var(--radius-sm) var(--radius-sm);
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    text-decoration: none;
+    transition: transform 0.15s ease;
+}
+
+.skip-link:focus-visible {
+    transform: translateY(0);
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+}
+
+/* Destino del skip-link: recibe foco sólo de forma programática (tabindex="-1"),
+   no es un control ni está en el recorrido normal de Tab, así que no lleva anillo. */
+#contenido:focus {
+    outline: none;
+}
+
 /* --------------------------------------------------------------------------
    5. Navegación — Flexbox · integrada con la identidad del hero
    -------------------------------------------------------------------------- */
@@ -127,6 +158,9 @@ nav {
     color: var(--color-text);
     text-decoration: none;
     margin-right: auto;
+    /* La marca es una sola unidad: no parte en dos líneas ni se comprime */
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .nav-brand span {
@@ -247,6 +281,24 @@ nav ul a:hover {
     line-height: 1.1;
 }
 
+/* Revelado tipo "tecleo" del nombre, una sola vez al cargar.
+   Se anima clip-path (no afecta el layout: sin reflow ni salto). */
+.hero-name {
+    display: inline-block;
+    vertical-align: bottom;
+    animation: hero-name-type 1.2s steps(14) both;
+}
+
+@keyframes hero-name-type {
+    from {
+        clip-path: inset(0 100% 0 0);
+    }
+
+    to {
+        clip-path: inset(0 0 0 0);
+    }
+}
+
 .hero-subtitle {
     font-family: var(--font-mono);
     color: var(--color-text-muted);
@@ -320,6 +372,45 @@ nav ul a:hover {
     gap: var(--space-md);
 }
 
+/* Contenedor del avatar: ancla la segunda circunferencia (aura).
+   Mismo componente para el avatar de desktop y el compacto de mobile;
+   solo se muestra uno a la vez según el breakpoint. */
+.hero-avatar-wrap {
+    position: relative;
+    display: inline-flex;
+    border-radius: 50%;
+}
+
+/* La variante mobile del contenedor está oculta en desktop */
+.hero-avatar-wrap-mobile {
+    display: none;
+}
+
+/* Aura: circunferencia detrás del borde existente que "respira" despacio.
+   No mueve ni escala la imagen real; solo el pseudo-elemento. */
+.hero-avatar-wrap::before {
+    content: "";
+    position: absolute;
+    inset: -7px;
+    border-radius: 50%;
+    border: 2px solid var(--color-accent);
+    opacity: 0.3;
+    pointer-events: none;
+    animation: avatar-aura 3s ease-in-out infinite;
+}
+
+@keyframes avatar-aura {
+    0%, 100% {
+        transform: scale(0.98);
+        opacity: 0.18;
+    }
+
+    50% {
+        transform: scale(1.06);
+        opacity: 0.38;
+    }
+}
+
 /* Avatar con anillo de acento */
 .hero-avatar {
     width: 160px;
@@ -332,6 +423,24 @@ nav ul a:hover {
 /* Avatar compacto (mobile): oculto en desktop, se muestra junto al nombre en ≤767px */
 .hero-avatar-mobile {
     display: none;
+}
+
+/* Accesibilidad: sin animaciones del hero cuando el usuario las reduce.
+   El nombre queda visible al instante y el aura, estática. */
+@media (prefers-reduced-motion: reduce) {
+    .skip-link {
+        transition: none;
+    }
+
+    .hero-name {
+        animation: none;
+    }
+
+    .hero-avatar-wrap::before {
+        animation: none;
+        transform: none;
+        opacity: 0.22;
+    }
 }
 
 /* --------------------------------------------------------------------------
@@ -400,7 +509,8 @@ section {
 
 /* Compensa la altura del navbar sticky al saltar a cada sección */
 section[id],
-#inicio {
+#inicio,
+#contenido {
     scroll-margin-top: 5rem;
 }
 
@@ -718,6 +828,18 @@ footer {
 }
 
 /* --------------------------------------------------------------------------
+   TABLET ANGOSTA (768px – 820px)
+   Franja donde el navbar horizontal todavía está activo pero el ancho no
+   alcanza para la marca + los cuatro links + el toggle con el gap de 2rem.
+   Se reduce sólo ese gap; tipografía, paddings y alturas quedan intactos.
+   -------------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 820px) {
+    .nav-inner {
+        gap: var(--space-sm);
+    }
+}
+
+/* --------------------------------------------------------------------------
    MOBILE (≤ 767px)
    -------------------------------------------------------------------------- */
 @media (max-width: 767px) {
@@ -869,14 +991,29 @@ footer {
         margin-top: 1.9rem;
     }
 
-    /* Avatar: en mobile se oculta el grande y se muestra el compacto junto al nombre */
+    /* Avatar: en mobile se oculta el grande y se muestra el compacto junto al nombre.
+       El aura pasa al contenedor mobile; nunca hay dos auras a la vez. */
+    .hero-side .hero-avatar-wrap {
+        display: none;
+    }
+
     .hero-avatar {
         display: none;
     }
 
+    .hero-avatar-wrap-mobile {
+        display: inline-flex;
+        grid-area: avatar;
+    }
+
+    /* Aura mobile: misma idea, un punto más sutil por el tamaño reducido */
+    .hero-avatar-wrap-mobile::before {
+        inset: -5px;
+        opacity: 0.24;
+    }
+
     .hero-avatar-mobile {
         display: block;
-        grid-area: avatar;
         width: 96px;
         height: 96px;
         border-radius: 50%;
