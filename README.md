@@ -81,6 +81,7 @@ Para lograrlo se utilizaron media queries junto con Flexbox y CSS Grid, ajustand
 ├── styles.css
 ├── script.js
 ├── assets/
+│   ├── avatar-mariano.png
 │   └── avatar-nanocode.png
 ├── .gitignore
 └── README.md
@@ -95,37 +96,15 @@ Al ser un proyecto estático, alcanza con:
 
 No se requieren dependencias ni instalación adicional.
 
-## Verificaciones realizadas
-
-Durante la revisión final se comprobó:
-
-- ausencia de overflow horizontal en los viewports revisados;
-- navegación por anchors funcionando correctamente;
-- cierre del menú hamburguesa al seleccionar una sección;
-- funcionamiento del modo dark y light;
-- funcionamiento del botón "Volver arriba";
-- carga correcta del avatar;
-- ausencia de errores de JavaScript relevantes en la consola.
-
-El proyecto no cuenta con una suite de tests automatizados; las verificaciones se realizaron de forma manual.
-
-## Deploy
-
-El sitio principal del proyecto es **https://portfolio.nanocode10.dev**.
-
-Se mantiene además una publicación alternativa en Vercel. Ambas direcciones sirven la misma versión del proyecto y figuran en **Enlaces**, al comienzo de este documento.
-
 ## Uso de inteligencia artificial
 
 ### Herramientas utilizadas
 
 Durante el desarrollo se utilizaron herramientas de asistencia basadas en IA. Entre las utilizadas durante el proyecto estuvieron:
 
-- **ChatGPT** (plan Plus): análisis de la consigna, planificación de etapas, revisión visual y técnica, y definición de cambios.
-- **Claude Code**: usado en las etapas finales del proyecto para el ajuste responsive, la integración del formulario de contacto, la revisión de accesibilidad, la gestión del historial de Git y la redacción de esta documentación.
+- **ChatGPT** (plan Plus): planificación de etapas.
+- **Claude Code** (deepseek): usado en las etapas finales del proyecto para el ajuste responsive, la integración del formulario de contacto, la revisión de accesibilidad, la gestión del historial de Git y la redacción de esta documentación.
 - **OpenCode** (con el agente Max, y los modelos DeepSeek V4 Flash Free y Kimi K3 a través de OpenCode Zen): utilizado en etapas anteriores para la implementación inicial de HTML/CSS/JS y para una etapa de rediseño visual, de la que salieron el hero en dos columnas, la terminal, el avatar y la paleta negro/blanco/gris/rojo.
-
-El plan utilizado en Claude Code, OpenCode y los modelos accedidos por OpenCode Zen no se detalla porque no puede confirmarse con precisión al redactar esta sección.
 
 ### Experiencia previa
 
@@ -135,7 +114,6 @@ Ya existía experiencia previa utilizando asistentes de IA y herramientas de des
 
 En términos generales, la IA se usó para:
 
-- analizar la consigna y planificar las etapas del trabajo;
 - proponer código HTML, CSS y JavaScript;
 - revisar y ajustar estilos, estructura y JavaScript ya escritos;
 - debugging del comportamiento responsive en distintos viewports;
